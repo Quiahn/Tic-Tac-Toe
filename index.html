@@ -1,17 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Do not add `link` tags-->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Browser Template</h1>
-    </body>
+    <!-- Do not add `script` tags-->
+    <script
+      src="public/vendor.js"
+      type="text/javascript"
+      charset="utf-8"
+      defer
+    ></script>
+    <script
+      src="public/application.js"
+      type="text/javascript"
+      charset="utf-8"
+      defer
+    ></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>TIC-TAC-TOE</h1>
+      </header>
+      <main>
+        <!-- Win Lost Counter -->
+        <div id="Win-lost-container">
+          <p id="win-count"></p>
+          <p id="Lost-count"></p>
+        </div>
+        <!-- Game -->
+
+        <!-- Account buttons -->
+        <button id="sign-up-btn" class="btn btn-primary">Sign Up</button>
+        <button id="log-in-btn" class="btn btn-primary">Log In</button>
+        <button id="log-out-btn" class="btn btn-primary">Log Out</button>
+        <button id="show-games" class="btn btn-primary">Past Games</button>
+        <p id="message"></p>
+        <!-- Forms -->
+        <form id="sign-up-form" class="forms">
+          <label for="">Email</label>
+          <input type="email" name="credentials[email]">
+          <label for="">Password</label>
+          <input type="password" name="credentials[password]">
+          <label for="">Password Confirmation</label>
+          <input type="password" name="credentials[password_confirmation]">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+
+        <form id="log-in-form" class="forms">
+          <label for="">Email</label>
+          <input type="email" name="credentials[email]">
+          <label for="">Password</label>
+          <input type="password" name="credentials[password]">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+      </main>
+    </div>
+  </body>
 </html>
