@@ -1,5 +1,6 @@
 const store = {
-  token: ''
+  token: '',
+  _id: ''
 }
 
 module.exports = store

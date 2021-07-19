@@ -26,15 +26,18 @@ const onLogOut = () => {
     .catch(ui.onLogOutFailure)
 }
 
-const onShowGames = () => {
-  api.showGames()
-    .then(ui.onShowGamesSuccess)
-    .catch(ui.onShowGamesFailure)
+const onChangePassword = (event) => {
+  event.preventDefault()
+  // Get info from event
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then()
+    .catch()
 }
 
 module.exports = {
   onSignUp,
   onLogIn,
   onLogOut,
-  onShowGames
+  onChangePassword
 }

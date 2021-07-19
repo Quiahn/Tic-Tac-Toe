@@ -29,17 +29,29 @@
       </header>
       <main>
         <!-- Win Lost Counter -->
-        <div id="Win-lost-container">
+        <div id="win-lost-container">
           <p id="win-count"></p>
           <p id="Lost-count"></p>
         </div>
         <!-- Game -->
-
+        <!-- Row 1 -->
+        <div id="spot-0" data-cell-index="0"></div>
+        <div id="spot-1" data-cell-index="1"></div>
+        <div id="spot-2" data-cell-index="2"></div>
+        <!-- Row 2 -->
+        <div id="spot-3" data-cell-index="3"></div>
+        <div id="spot-4" data-cell-index="4"></div>
+        <div id="spot-5" data-cell-index="5"></div>
+        <!-- Row 3 -->
+        <div id="spot-6" data-cell-index="6"></div>
+        <div id="spot-7" data-cell-index="7"></div>
+        <div id="spot-8" data-cell-index="8"></div>
         <!-- Account buttons -->
         <button id="sign-up-btn" class="btn btn-primary">Sign Up</button>
         <button id="log-in-btn" class="btn btn-primary">Log In</button>
         <button id="log-out-btn" class="btn btn-primary">Log Out</button>
         <button id="show-games" class="btn btn-primary">Past Games</button>
+        <button id="create-game" class="btn btn-primary">Create Game</button>
         <p id="message"></p>
         <!-- Forms -->
         <form id="sign-up-form" class="forms">
@@ -59,6 +71,15 @@
           <input type="password" name="credentials[password]">
           <input type="submit" value="Submit" class="btn btn-primary">
         </form>
+
+        <form id="change-password-form">
+          <label for="old-password">Old Password</label>
+          <input type="password" name="passwords[old]" id="old-password">
+          <label for="new-password">New Password</label>
+          <input type="password" name="passwords[new]" id="new-password">
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+
       </main>
     </div>
   </body>

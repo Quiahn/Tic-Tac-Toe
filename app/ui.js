@@ -1,5 +1,7 @@
 const store = require('./store')
 
+// Auth ui
+
 const onSignUpSuccess = (response) => {
   console.log(response)
   $('#message').text(`thank you for signing up ${response.user.email}`)
@@ -33,11 +35,30 @@ const onLogOutFailure = () => {
   console.log('failure')
 }
 
+const onChangePasswordSuccess = (response) => {
+  console.log(response)
+}
+
+const onChangePasswordFailure = () => {
+  console.log('failure')
+}
+
+// Game ui
+
 const onShowGamesSuccess = (response) => {
   console.log(response)
 }
 
 const onShowGamesFailure = () => {
+  console.log('failure')
+}
+
+const onCreateGameSuccess = (response) => {
+  console.log(response)
+  store._id = response.game._id
+}
+
+const onCreateGameFailure = () => {
   console.log('failure')
 }
 
@@ -48,6 +69,10 @@ module.exports = {
   onLogInFailure,
   onLogOutSuccess,
   onLogOutFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure,
   onShowGamesSuccess,
-  onShowGamesFailure
+  onShowGamesFailure,
+  onCreateGameSuccess,
+  onCreateGameFailure
 }

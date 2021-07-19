@@ -1,5 +1,6 @@
 const store = require('./store')
-// API call // sign user up
+
+// Auth api calls
 const signUp = (data) => {
   console.log(data, ' Sign Up')
   return $.ajax({
@@ -8,7 +9,7 @@ const signUp = (data) => {
     data: data
   })
 }
-// API call // log user in
+
 const logIn = (data) => {
   console.log(data, ' Log In')
   return $.ajax({
@@ -17,7 +18,7 @@ const logIn = (data) => {
     data: data
   })
 }
-// API call // log user out
+
 const logOut = () => {
   console.log('Log Out')
   return $.ajax({
@@ -28,7 +29,20 @@ const logOut = () => {
     }
   })
 }
-// API call // show user all games
+
+const changePassword = (data) => {
+  console.log('Password Changed')
+  return $.ajax({
+    url: 'https://tic-tac-toe-api-development.herokuapp.com/change-password',
+    method: 'PATCH',
+    data: data,
+    headers: {
+      Authorization: 'Bearer ' + store.token
+    }
+  })
+}
+
+// Game api calls
 const showGames = () => {
   console.log('Show Games')
   return $.ajax({
@@ -39,7 +53,7 @@ const showGames = () => {
     }
   })
 }
-// API call // create a new game
+
 const createGame = () => {
   console.log('Create Game')
   return $.ajax({
@@ -55,6 +69,7 @@ module.exports = {
   signUp,
   logIn,
   logOut,
+  changePassword,
   showGames,
   createGame
 }
