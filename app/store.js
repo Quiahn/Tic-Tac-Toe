@@ -1,6 +1,7 @@
 const store = {
   token: '',
-  _id: ''
+  _id: '',
+  currentPlayer: ''
 }
 
 module.exports = store

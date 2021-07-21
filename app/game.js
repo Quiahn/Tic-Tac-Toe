@@ -1,5 +1,5 @@
-const getFormFields = require('./../lib/get-form-fields')
 const api = require('./api')
+const store = require('./store')
 const ui = require('./ui')
 
 const onShowGames = () => {
@@ -9,12 +9,28 @@ const onShowGames = () => {
 }
 
 const onCreateGame = () => {
+  $('.board').show('slow')
   api.createGame()
     .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFailure)
 }
 
+const onCellClicked = (event) => {
+  const cell = $(event.target)
+  cell.text(store.currentPlayer)
+  store.currentPlayer = store.currentPlayer === 'O' ? 'X' : 'O'
+}
+
+const onPickGame = (event) => {
+  const gameId = event.target.getAttribute('data-id')
+  api.pickGame(gameId)
+    .then(ui.onPickGameSuccess)
+    .catch(ui.onPickGameFailure)
+}
+
 module.exports = {
   onShowGames,
-  onCreateGame
+  onCreateGame,
+  onCellClicked,
+  onPickGame
 }

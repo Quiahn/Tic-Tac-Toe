@@ -65,11 +65,43 @@ const createGame = () => {
   })
 }
 
+const updateGame = (data) => {
+  console.log('Updating game')
+  return $.ajax({
+    url: 'https://tic-tac-toe-api-development.herokuapp.com/games' + store._id,
+    method: 'PATCH',
+    data: data,
+    headers: {
+      Authorization: 'Bearer ' + store.token
+    }
+    // game: {
+    //   cell: {
+    //     index: idx,
+    //     value: val
+    //   },
+    //   over: false
+    // }
+  })
+}
+
+const pickGame = (data) => {
+  console.log('Picking game')
+  return $.ajax({
+    url: 'https://tic-tac-toe-api-development.herokuapp.com/games/' + data,
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   logIn,
   logOut,
   changePassword,
   showGames,
-  createGame
+  createGame,
+  updateGame,
+  pickGame
 }

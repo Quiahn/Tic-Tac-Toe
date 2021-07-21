@@ -19,6 +19,11 @@ const onLogInSuccess = (response) => {
   store.token = response.user.token
   $('#message').text(`Logged in as: ${response.user.email}`)
   $('#log-in-form').trigger('reset')
+  //
+  $('#log-in-btn').hide()
+  $('#sign-up-btn').hide()
+  $('#log-out-btn').show()
+  $('.board').show()
 }
 
 const onLogInFailure = () => {
@@ -29,6 +34,10 @@ const onLogInFailure = () => {
 
 const onLogOutSuccess = (response) => {
   console.log(response)
+  $('#log-out-btn').hide()
+  $('#show-games-btn').hide()
+  $('#create-game-btn').hide()
+  $('.board').hide()
 }
 
 const onLogOutFailure = () => {
@@ -37,16 +46,29 @@ const onLogOutFailure = () => {
 
 const onChangePasswordSuccess = (response) => {
   console.log(response)
+  $('#change-password-form').trigger('reset')
 }
 
 const onChangePasswordFailure = () => {
   console.log('failure')
+  $('#change-password-form').trigger('reset')
 }
 
 // Game ui
 
 const onShowGamesSuccess = (response) => {
+  let div = ''
   console.log(response)
+  response.games.forEach(game => {
+    console.log(game)
+    div += `
+    <h3>${game._id}</h3>
+    <p>Time created: ${game.createdAt}</p>
+    <button data-id="${game._id}" class="pick-game-btn btn btn-secondary">Load game</button>
+    <hr>
+    `
+  })
+  $('#past-games').append(div)
 }
 
 const onShowGamesFailure = () => {
@@ -56,10 +78,19 @@ const onShowGamesFailure = () => {
 const onCreateGameSuccess = (response) => {
   console.log(response)
   store._id = response.game._id
+  console.log(store._id)
 }
 
 const onCreateGameFailure = () => {
   console.log('failure')
+}
+
+const onPickGameSuccess = (response) => {
+  console.log(response)
+}
+
+const onPickGameFailure = (error) => {
+  console.error('failure: ' + error)
 }
 
 module.exports = {
@@ -74,5 +105,7 @@ module.exports = {
   onShowGamesSuccess,
   onShowGamesFailure,
   onCreateGameSuccess,
-  onCreateGameFailure
+  onCreateGameFailure,
+  onPickGameSuccess,
+  onPickGameFailure
 }

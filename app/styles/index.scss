@@ -1,1 +1,40 @@
 @import '~bootstrap/scss/bootstrap';
+
+.container {
+  height: 100vh;
+  text-align: center;
+}
+
+.board {
+  margin: auto;
+  max-height: calc(100vh - 75px);
+  max-width: calc(100vh - 75px);
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: white;
+  font-size: 15vh;
+  text-shadow: 2px 2px rgba(0, 0, 0, .25);
+  min-height: calc(100vh / 3.99);
+
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  &:nth-child(3n) {
+    border-right: 0;
+  }
+
+  &:nth-last-child(-n + 3) {
+    border-bottom: 0;
+  }
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+  user-select: none;
+}
