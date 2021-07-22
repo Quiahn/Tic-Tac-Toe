@@ -6,13 +6,13 @@ const onSignUpSuccess = (response) => {
   console.log(response)
   $('#message').text(`thank you for signing up ${response.user.email}`)
   $('#sign-up-form').trigger('reset')
+  $('#sign-up-btn').trigger('click')
 }
 
 const onSignUpFailure = () => {
   console.log('Failure')
   $('#game-message').text('Sign up failure')
   $('#sign-up-form').trigger('reset')
-  $('#sign-up-btn'.trigger('click'))
 }
 
 const onLogInSuccess = (response) => {
