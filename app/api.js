@@ -1,10 +1,11 @@
 const store = require('./store')
+const config = require('./config')
 
 // Auth api calls
 const signUp = (data) => {
   console.log(data, ' Sign Up')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/sign-up',
+    url: config.apiUrl + '/sign-up',
     method: 'POST',
     data: data
   })
@@ -13,7 +14,7 @@ const signUp = (data) => {
 const logIn = (data) => {
   console.log(data, ' Log In')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/sign-in',
+    url: config.apiUrl + '/sign-in',
     method: 'POST',
     data: data
   })
@@ -22,7 +23,7 @@ const logIn = (data) => {
 const logOut = () => {
   console.log('Log Out')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/sign-out',
+    url: config.apiUrl + '/sign-out',
     method: 'DELETE',
     headers: {
       Authorization: 'Bearer ' + store.token
@@ -33,7 +34,7 @@ const logOut = () => {
 const changePassword = (data) => {
   console.log('Password Changed')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/change-password',
+    url: config.apiUrl + '/change-password',
     method: 'PATCH',
     data: data,
     headers: {
@@ -46,7 +47,7 @@ const changePassword = (data) => {
 const showGames = () => {
   console.log('Show Games')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/games',
+    url: config.apiUrl + '/games',
     method: 'GET',
     headers: {
       Authorization: 'Bearer ' + store.token
@@ -57,7 +58,7 @@ const showGames = () => {
 const createGame = () => {
   console.log('Create Game')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/games',
+    url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       Authorization: 'Bearer ' + store.token
@@ -68,7 +69,7 @@ const createGame = () => {
 const updateGame = (data) => {
   console.log('Updating game')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/games/' + store._id,
+    url: config.apiUrl + '/games/' + store._id,
     method: 'PATCH',
     data: data,
     headers: {
@@ -80,7 +81,7 @@ const updateGame = (data) => {
 const pickGame = (data) => {
   console.log('Picking game')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/games/' + data,
+    url: config.apiUrl + '/games/' + data,
     method: 'GET',
     headers: {
       Authorization: 'Bearer ' + store.token
