@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Quiahn's Tic-Tac-Toe</title>
+    <title>Tic-Tac-Toe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Do not add `link` tags-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
     <!-- Do not add `script` tags-->
-    <script
-      src="public/vendor.js"
-      type="text/javascript"
-      charset="utf-8"
-      defer
-      ></script>
-    <script
-      src="public/application.js"
-      type="text/javascript"
-      charset="utf-8"
-      defer
-      ></script>
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
   </head>
   <body>
     <div class="container">
       <header>
-        <h1>TIC-TAC-TOE</h1>
+        <h1>✗TIC-TAC-TOE◯</h1>
+        <p id="message" ></p>
       </header>
       <main>
         <!-- Win Lost Counter -->
@@ -31,6 +22,7 @@
           <p id="Lost-count"></p>
           </div> -->
         <!-- Game -->
+        <p id="game-message"></p>
         <div class="row h-100 board">
           <!-- The class cell has an on click event. When any cell is clicked
             the function will get the data-cell-index value and update the game.
@@ -50,59 +42,26 @@
           <div class="cell col-4" id="spot-8" data-cell-index="8"></div>
         </div>
         <!-- Account buttons -->
+        <!-- Hidden end game button for win lose conditions -->
+        <button id="end-game-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#end-game-modal">Win Game</button>
         <!-- Sign up button -->
-        <button
-          id="sign-up-btn"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#sign-up-modal"
-          >
-        Sign Up
-        </button>
+        <button id="sign-up-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sign-up-modal">Sign Up</button>
         <!-- Log in button -->
-        <button
-          id="log-in-btn"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#log-in-modal"
-          >
-        Log In
-        </button>
+        <button id="log-in-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#log-in-modal">Log In</button>
         <!-- Log out button -->
         <button id="log-out-btn" class="btn btn-primary">Log Out</button>
         <!-- Show games button -->
-        <button
-          id="show-games-btn"
-          class="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#past-games-modal"
-          >
-        Past Games
-        </button>
+        <button id="show-games-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#past-games-modal">Past Games</button>
         <!-- Create game button -->
-        <button id="create-game-btn" class="btn btn-primary">
-        Create Game
-        </button>
-        <p id="message"></p>
+        <button id="create-game-btn" class="btn btn-primary">New Game</button>
         <!-- Modals -->
         <!-- Sign up modal -->
-        <div
-          class="modal fade"
-          id="sign-up-modal"
-          tabindex="-1"
-          aria-labelledby="sign-up-modal-label"
-          aria-hidden="true"
-          >
+        <div class="modal fade" id="sign-up-modal" tabindex="-1" aria-labelledby="sign-up-modal-label" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="sign-up-modal-label">Sign Up</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form id="sign-up-form">
@@ -111,45 +70,24 @@
                   <label for="">Password</label> <br />
                   <input type="password" name="credentials[password]" /><br />
                   <label for="">Password Confirmation</label> <br />
-                  <input
-                    type="password"
-                    name="credentials[password_confirmation]"
-                    />
+                  <input type="password" name="credentials[password_confirmation]" />
                 </form>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  >
-                Close
-                </button>
-                <button
-                  type="submit"
-                  form="sign-up-form"
-                  class="btn btn-primary"
-                  >
-                Submit
-                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="sign-up-form" class="btn btn-primary"> Submit</button>
               </div>
             </div>
           </div>
         </div>
         <!-- Log in modal -->
-        <div
-          class="modal fade"
-          id="log-in-modal"
-          tabindex="-1"
-          aria-labelledby="log-in-modal-label"
-          aria-hidden="true"
-          >
-          <div class="modal-dialog">
+        <div class="modal fade" id="log-in-modal" tabindex="-1" aria-labelledby="log-in-modal-label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="log-in-modal-label">Log In</h5>
                 <h5 class="modal-title" id="change-password-modal-label"> Change Password </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form id="log-in-form">
@@ -169,60 +107,42 @@
 
               </div>
               <div class="modal-footer">
-                <input
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-                value="Close"
-                />
+                <input type="button" class="btn btn-secondary" data-bs-dismiss="modal" value="Close" />
 
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="btn btn-primary log-in"
-                  form="log-in-form"
-                  />
+                <input type="submit" value="Submit" class="btn btn-primary log-in" form="log-in-form" />
 
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="btn btn-primary change-password"
-                  form="change-password-form"
-                  />
+                <input type="submit" value="Submit" class="btn btn-primary change-password" form="change-password-form" />
               </div>
             </div>
           </div>
         </div>
         <!-- Past games modal -->
-        <div
-          class="modal fade"
-          id="past-games-modal"
-          tabindex="-1"
-          aria-labelledby="past-games-modal-label"
-          aria-hidden="true"
-          >
-          <div class="modal-dialog">
+        <div class="modal fade" id="past-games-modal" tabindex="-1" aria-labelledby="past-games-modal-label" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="past-games-modal-label">
                   Past Games
                 </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body" id="past-games"></div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  >
-                Close
-                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Game Modal -->
+        <div class="modal fade" id="end-game-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+                <h5 class="modal-title" id="end-game-modal-label"></h5>
+              </div>
+              <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary play-new-game">New Game</button>
               </div>
             </div>
           </div>

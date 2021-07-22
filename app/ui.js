@@ -10,7 +10,7 @@ const onSignUpSuccess = (response) => {
 
 const onSignUpFailure = () => {
   console.log('Failure')
-  $('#message').text('Sign up failure')
+  $('#game-message').text('Sign up failure')
   $('#sign-up-form').trigger('reset')
 }
 
@@ -23,25 +23,32 @@ const onLogInSuccess = (response) => {
   $('#log-in-btn').hide()
   $('#sign-up-btn').hide()
   $('#log-out-btn').show()
-  $('.board').show()
+  $('#create-game-btn').show()
 }
 
 const onLogInFailure = () => {
   console.log('Failure')
-  $('#message').text('Sign up failure')
+  $('#game-message').text('Log In failure')
   $('#log-in-form').trigger('reset')
 }
 
 const onLogOutSuccess = (response) => {
   console.log(response)
+  $('#message').text('Logged Out Successfully')
+  $('#game-message').text('')
   $('#log-out-btn').hide()
   $('#show-games-btn').hide()
   $('#create-game-btn').hide()
   $('.board').hide()
+  $('#log-in-btn').show()
+  $('#sign-up-btn').show()
+  store.token = ''
+  store._id = ''
 }
 
 const onLogOutFailure = () => {
   console.log('failure')
+  $('#game-message').text('Log Out failure')
 }
 
 const onChangePasswordSuccess = (response) => {
@@ -76,9 +83,14 @@ const onShowGamesFailure = () => {
 }
 
 const onCreateGameSuccess = (response) => {
+  store.currentPlayer = 'X'
+  $('.board').show('slow')
+  $('#game-message').text('Game Created')
   console.log(response)
   store._id = response.game._id
-  console.log(store._id)
+  $('.cell').text('')
+  $('.board').css('pointer-events', 'auto')
+  store.game = []
 }
 
 const onCreateGameFailure = () => {
@@ -91,6 +103,25 @@ const onPickGameSuccess = (response) => {
 
 const onPickGameFailure = (error) => {
   console.error('failure: ' + error)
+}
+
+const onUpdateGameSuccessful = (response) => {
+  $('#game-message').text('')
+  console.log(response)
+  store.game = response.game.cells
+  let tieCounter = 0
+  store.game.forEach(cell => cell !== '' ? tieCounter++ : '')
+  if (tieCounter === 9 && response.game.over === false) {
+    console.log('Tie')
+    $('#end-game-modal-label').text('You Tied!')
+    $('#end-game-btn').trigger('click')
+    $('.board').css('pointer-events', 'none')
+  }
+  console.log(tieCounter)
+}
+
+const onUpdateGameFailure = (error) => {
+  console.log(error)
 }
 
 module.exports = {
@@ -107,5 +138,7 @@ module.exports = {
   onCreateGameSuccess,
   onCreateGameFailure,
   onPickGameSuccess,
-  onPickGameFailure
+  onPickGameFailure,
+  onUpdateGameSuccessful,
+  onUpdateGameFailure
 }

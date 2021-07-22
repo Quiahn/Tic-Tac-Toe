@@ -15,14 +15,16 @@ $(() => {
   $('#create-game-btn').hide()
   $('.board').hide()
   $('.change-password').hide()
+  $('#end-game-btn').hide()
   //
-  store.currentPlayer = 'X'
+  store.currentPlayer = 'x'
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#log-in-form').on('submit', authEvents.onLogIn)
   $('#log-out-btn').on('click', authEvents.onLogOut)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#show-games').on('click', gameEvents.onShowGames)
-  $('#create-game').on('click', gameEvents.onCreateGame)
-  $('.cell').on('click', gameEvents.onCellClicked)
+  $('#create-game-btn').on('click', gameEvents.onCreateGame)
+  $('.play-new-game').on('click', gameEvents.onCreateGame)
+  $('.cell').on('click', gameEvents.onUpdateGame)
   $('body').on('click', '.pick-game-btn', gameEvents.onPickGame)
 })

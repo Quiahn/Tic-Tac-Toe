@@ -1,7 +1,8 @@
 const store = {
   token: '',
   _id: '',
-  currentPlayer: ''
+  currentPlayer: '',
+  game: []
 }
 
 module.exports = store

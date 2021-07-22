@@ -68,19 +68,12 @@ const createGame = () => {
 const updateGame = (data) => {
   console.log('Updating game')
   return $.ajax({
-    url: 'https://tic-tac-toe-api-development.herokuapp.com/games' + store._id,
+    url: 'https://tic-tac-toe-api-development.herokuapp.com/games/' + store._id,
     method: 'PATCH',
     data: data,
     headers: {
       Authorization: 'Bearer ' + store.token
     }
-    // game: {
-    //   cell: {
-    //     index: idx,
-    //     value: val
-    //   },
-    //   over: false
-    // }
   })
 }
 
