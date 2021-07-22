@@ -12,6 +12,7 @@ const onSignUpFailure = () => {
   console.log('Failure')
   $('#game-message').text('Sign up failure')
   $('#sign-up-form').trigger('reset')
+  $('#sign-up-btn'.trigger('click'))
 }
 
 const onLogInSuccess = (response) => {
@@ -25,6 +26,7 @@ const onLogInSuccess = (response) => {
   $('#sign-up-btn').hide()
   $('#log-out-btn').show()
   $('#create-game-btn').show()
+  $('#log-in-btn').trigger('click')
 }
 
 const onLogInFailure = () => {
