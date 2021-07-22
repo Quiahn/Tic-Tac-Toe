@@ -1,7 +1,11 @@
 # Tic-Tac-Toe
-##
-This app allows you to play a game of tic-tac-toe with your friend locally.
-You first have to create an account then sign in. Once you are signed in you press the new game button then start playing!
+## Intro
+This is a single page application that allows users play Tic Tac Toe Locally with a friend. 
+This app was built using bootstrap, sass, and jquery. With a backend that was built by general assembly.
+
+## How To Start
+First the user has to create an account then the user will need to log in. After that the user will need to create a game.
+Once those steps are done the user will be able to play
 
 ## User Stories
 ### As a user:

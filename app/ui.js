@@ -20,6 +20,7 @@ const onLogInSuccess = (response) => {
   $('#message').text(`Logged in as: ${response.user.email}`)
   $('#log-in-form').trigger('reset')
   //
+  $('#game-message').text = ''
   $('#log-in-btn').hide()
   $('#sign-up-btn').hide()
   $('#log-out-btn').show()
